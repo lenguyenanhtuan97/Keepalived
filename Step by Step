@@ -1,0 +1,29 @@
+# yum installl keepalived
+
+// setup keepalived
+
+vi /etc/keepalived/keepalived.conf
+
+  ! Configuration File for keepalived
+
+global_defs {
+   notification_email {
+     <your_domian_mail>   
+     <your_domian_mail>        
+   }
+   notification_email_from <your_domian_mail>  
+   smtp_server <your_server_smtp>
+   smtp_connect_timeout 30
+}
+
+vrrp_instance VI_1 {
+    state MASTER   # MASTER or BACKUP
+    interface <number_interface>
+    virtual_router_id <nunber>        // which is the same with oppisite
+    priority 101                    //
+    advert_int 1    
+    }
+    virtual_ipaddress {
+        < Virtual_IP>
+    }
+}
